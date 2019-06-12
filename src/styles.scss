@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import "~bootstrap/scss/mixins";
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/media';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/navbar';
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/carousel";
+
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
