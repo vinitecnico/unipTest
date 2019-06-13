@@ -23,18 +23,70 @@
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/carousel";
 
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 
-$bg-color-menu: #054875;
+$bg-color-primary: #054875;
 $bg-color-white: #FFFFFF;
 
+
+
 .bg-color-menu {
-    background-color: $bg-color-menu;
+    background-color: $bg-color-primary;
 }
 
 .bg-color-menu-left {
-    background-color: $bg-color-menu;
+    background-color: $bg-color-primary;
     color: $bg-color-white;
-    height:100vh;
+    height: 87vh;
+}
+
+.menu-body {
+    margin-top: 10px;
+    a {
+        color: $bg-color-white;
+    }
+}
+
+.body-page{
+    .title-page {
+        color: $bg-color-primary;
+        padding-top: 10px;
+    }
+
+    .btn-primary {
+        background-color: $bg-color-primary;
+        border-color: $bg-color-primary;
+        margin-top: 3%;
+    }
+    
+    .button-align-right {
+        text-align: right;
+    }
+
+    .itens-body {
+        margin-top: 2%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .nav-link-sm-hidden {
+        display: none;
+    }
+
+    .nav-menu-left-sm-hidden {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .nav-link-xs-hidden {
+        display: block;
+    }
+
+    .nav-menu-left-sm-hidden {
+        display: none;
+    }
 }

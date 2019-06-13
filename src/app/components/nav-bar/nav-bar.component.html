@@ -1,5 +1,18 @@
-<nav class="navbar navbar-light bg-color-menu">
-    <a class="navbar-brand" href="#">
-      <img src="assets/logo.png" width="191" height="66" class="d-inline-block align-top" alt="">
-    </a>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-color-menu">
+  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" [routerLink]="['/home']" (click)="isCollapsed = !isCollapsed">
+    <img src="assets/logo.png" width="191" height="66" class="d-inline-block align-top" alt="">
+  </a>
+  <div class="collapse nav-link-xs-hidden" id="navbarsExampleDefault" [collapse]="isCollapsed">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" [ngClass]="{'active': activeUrl == '/'}">
+        <a class="nav-link text-uppercase" [routerLink]="['/']" (click)="isCollapsed = !isCollapsed">
+          <i class="fa fa-cog"></i> Gerenciar Menu
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

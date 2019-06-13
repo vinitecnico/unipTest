@@ -1,15 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <app-nav-bar></app-nav-bar>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2 col-sm-2 col-xs-12 bg-color-menu-left">
-          <i class="fa fa-cog"></i>
-          Gerenciar Menu
-      </div>
-      <div class="col-md-10 col-sm-10 col-xs-12">
-        <router-outlet></router-outlet>
+<block-ui>
+  <div>
+    <app-nav-bar></app-nav-bar>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12 bg-color-menu-left nav-menu-left-sm-hidden">
+          <div class="menu-body">
+            <a [routerLink]="['/']">
+              <i class="fa fa-cog"></i> Gerenciar Menu
+            </a>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-10 col-xs-12">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</block-ui>
