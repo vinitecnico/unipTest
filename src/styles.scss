@@ -30,7 +30,7 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
 
 $bg-color-primary: #054875;
 $bg-color-white: #FFFFFF;
-
+$bg-color-remove: #eb8181;
 
 
 .bg-color-menu {
@@ -69,6 +69,40 @@ $bg-color-white: #FFFFFF;
     .itens-body {
         margin-top: 2%;
     }
+
+    .icon-default {
+        color: #91c280;
+        padding-right: 10px;
+        padding-top: 4px;
+    }
+
+    .icon-custon {
+        padding-top: 4px;
+        padding-right: 2px;
+    }
+
+    .icon-trash {
+        padding-left: 5px;
+        color: $bg-color-remove;
+    }
+
+    ul {
+        padding-left: 17px;
+        margin-top: 20px;
+    }
+
+    .mat-expansion-panel {
+        background: #d6d6d6;
+        margin-top: 10px!important;
+    }
+
+    .mat-expansion-panel-body{
+        background: #e6e6e6;
+    }
+}
+
+mat-panel-title .color-default {
+    color: $bg-color-primary;
 }
 
 @media only screen and (min-width: 992px) {

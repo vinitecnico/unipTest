@@ -9,6 +9,8 @@ import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 import { NgbModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import {
   MatListModule,
@@ -27,9 +29,21 @@ import {
   MatExpansionModule
 } from '@angular/material';
 
+import { StartupConfigService } from './services/startup.config.service';
+
+export function StartupConfigServiceFactory(startupConfigService: StartupConfigService) {
+  const domain = startupConfigService.getConfig();
+  console.log(domain);
+  startupConfigService.value = domain;
+  return domain;
+}
+
 // component
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { GerenciarMenuComponent } from './components/gerenciar-menu/gerenciar-menu.component';
+
+// services
+import { MenuService } from './services/menu.service';
 
 @NgModule({
   declarations: [
@@ -60,9 +74,10 @@ import { GerenciarMenuComponent } from './components/gerenciar-menu/gerenciar-me
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MenuService, StartupConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

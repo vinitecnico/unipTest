@@ -10,26 +10,63 @@
     <div class="row itens-body">
         <div class="col-12">
             <mat-accordion>
-                <mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                    *ngFor="let data of datas">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Personal data
+                            <div class="container-fluid body-page">
+                                <div class="row">
+                                    <div class="col-12 col-xs-12 col-sm-6">
+                                        <i class="fa fa-edit icon-default"></i>
+                                        <i class="fa {{data.icon}} icon-custon color-default"></i>
+                                        <span class="color-default">{{data.name}}</span>
+                                    </div>
+                                    <div class="col-12 col-xs-12 col-sm-6 text-right">
+                                        <span class="color-default"><i class="fa fa-plus-circle color-default"></i> Novo
+                                            Sub-item </span>
+                                        <i class="fa fa-trash icon-trash"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </mat-panel-title>
-                        <mat-panel-description>
-                            Type your name and age
-                        </mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <mat-form-field>
-                        <input matInput placeholder="First name">
-                    </mat-form-field>
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenStateSubMenu = true"
+                            (closed)="panelOpenStateSubMenu = false" *ngFor="let subMenu of data.items">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <div class="container-fluid body-page">
+                                        <div class="row">
+                                            <div class="col-12 col-xs-12 col-sm-6">
+                                                <i class="fa fa-edit icon-default"></i>
+                                                <i class="fa {{subMenu.item.icon}} icon-custon color-default"></i>
+                                                <span class="color-default">{{subMenu.item.name}}</span>
+                                            </div>
+                                            <div class="col-12 col-xs-12 col-sm-6 text-right">
+                                                <i class="fa fa-edit color-default"></i>
+                                                <i class="fa fa-trash icon-trash"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
 
-                    <mat-form-field>
-                        <input matInput placeholder="Age">
-                    </mat-form-field>
+                            <span class="color-default">
+                                <i class="fa fa-plus-circle color-default"></i> Novo Link
+                            </span>
+                            <ul>
+                                <li *ngFor="let link of subMenu.listItem">
+                                    <i class="fa {{link.icon}} icon-custon color-default"></i>
+                                    <span class="color-default">{{link.name}}</span>
+                                </li>
+                            </ul>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
                 </mat-expansion-panel>
-                
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+                <!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             Self aware panel
@@ -39,7 +76,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                     <p>I'm visible because I am open</p>
-                </mat-expansion-panel>
+                </mat-expansion-panel> -->
             </mat-accordion>
         </div>
     </div>
