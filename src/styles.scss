@@ -25,3 +25,16 @@
 
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
+
+$bg-color-menu: #054875;
+$bg-color-white: #FFFFFF;
+
+.bg-color-menu {
+    background-color: $bg-color-menu;
+}
+
+.bg-color-menu-left {
+    background-color: $bg-color-menu;
+    color: $bg-color-white;
+    height:100vh;
+}
