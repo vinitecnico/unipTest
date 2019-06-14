@@ -26,13 +26,13 @@ export class MenuService {
         return this.http.get<any[]>(url, httpOptions);
     }
 
-    createOrUpdateCollege(college: any): Observable<any> {
+    createOrUpdateMenu(menu: any): Observable<any> {
         const url = `${this.apiConfig.getConfig()}api/menu`;
 
-        if (college._id) {
-            return this.http.put(`${url}/${college._id}`, college, httpOptions);
+        if (menu._id) {
+            return this.http.put(`${url}/${menu._id}`, menu, httpOptions);
         } else {
-            return this.http.post(url, college, httpOptions);
+            return this.http.post(url, menu, httpOptions);
         }
     }
 
