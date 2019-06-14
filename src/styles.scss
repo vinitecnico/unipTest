@@ -31,6 +31,7 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
 $bg-color-primary: #054875;
 $bg-color-white: #FFFFFF;
 $bg-color-remove: #eb8181;
+$bg-color-green: #91c280;
 
 
 .bg-color-menu {
@@ -71,7 +72,7 @@ $bg-color-remove: #eb8181;
     }
 
     .icon-default {
-        color: #91c280;
+        color: $bg-color-green;
         padding-right: 10px;
         padding-top: 4px;
     }
@@ -99,6 +100,32 @@ $bg-color-remove: #eb8181;
     .mat-expansion-panel-body{
         background: #e6e6e6;
     }
+}
+
+.btn-salvar {
+    width: 48%;
+    height: 45px;
+    font-size: 25px;
+    color: $bg-color-white;
+    background-color: $bg-color-green;
+}
+
+.btn-cancelar {
+    width: 48%;
+    height: 45px;
+    font-size: 25px;
+    color: $bg-color-white;
+    background-color: $bg-color-remove;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.icon-modal {
+    font-size: 50px;
+    text-align: center;
+    color: $bg-color-primary;
 }
 
 mat-panel-title .color-default {

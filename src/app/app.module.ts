@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +42,7 @@ export function StartupConfigServiceFactory(startupConfigService: StartupConfigS
 // component
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { GerenciarMenuComponent } from './components/gerenciar-menu/gerenciar-menu.component';
+import { MenuModalComponent } from './components/menu-modal/menu-modal.component';
 
 // services
 import { MenuService } from './services/menu.service';
@@ -49,10 +51,13 @@ import { MenuService } from './services/menu.service';
   declarations: [
     AppComponent,
     NavBarComponent,
-    GerenciarMenuComponent
+    GerenciarMenuComponent,
+    MenuModalComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,   
     AppRoutingModule,
     NgbModule.forRoot(),
     NgbCollapseModule,
@@ -78,6 +83,7 @@ import { MenuService } from './services/menu.service';
     HttpClientModule
   ],
   providers: [MenuService, StartupConfigService],
+  entryComponents: [MenuModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

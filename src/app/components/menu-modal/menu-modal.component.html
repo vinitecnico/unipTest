@@ -1,0 +1,59 @@
+<div class="no-breadcrumbs">
+    <div class="row">
+        <div class="col-10 col-md-10">
+            <h2 class="md-header-title" mat-dialog-title *ngIf="!id; else editHeader">Inserir novo item</h2>
+        </div>
+        <div class="col-2 col-md-2 md-close-button">
+            <span (click)="closeDialog()" class="cursor-pointer">
+                <mat-icon matTooltip="Fechar">close</mat-icon>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<section mat-dialog-content class="container with-maxwidth chapter">
+    <article class="article">
+        <div class="box box-default">
+            <div class="box-body">
+                <form [formGroup]="form">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-sm-12 text-center">
+                                <i class="fa {{nameIcon}} icon-modal"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-sm-12">
+                                <mat-form-field class="full-width">
+                                    <mat-select placeholder="Icone" formControlName="icon" [(ngModel)]="nameIcon">
+                                        <mat-option *ngFor="let item of icons" [value]="item">
+                                            {{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                        campo obrigatório
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-sm-12">
+                                <mat-form-field class="full-width">
+                                    <input matInput formControlName="name" placeholder="Nome">
+                                    <mat-error>
+                                        campo obrigatório
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </article>
+</section>
+<div mat-dialog-actions class="form-group">
+    <button class="btn-cancelar" mat-raised-button (click)="closeDialog(false)">Cancelar</button>
+    <button class="btn-salvar" mat-raised-button (click)="saveOrUpdate(form.value.id)">Salvar</button>
+</div>

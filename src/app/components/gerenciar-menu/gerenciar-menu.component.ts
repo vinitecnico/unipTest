@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
 declare var swal: any;
+import * as _ from 'lodash';
+
+// Components
+import { MenuModalComponent } from '../menu-modal/menu-modal.component';
 
 // services
 import { MenuService } from 'src/app/services/menu.service';
@@ -11,7 +17,7 @@ import { MenuService } from 'src/app/services/menu.service';
 
 export class GerenciarMenuComponent implements OnInit {
     datas: [];
-    constructor(private menuService: MenuService) {
+    constructor(private menuService: MenuService, public dialog: MatDialog) {
 
     }
 
@@ -22,34 +28,27 @@ export class GerenciarMenuComponent implements OnInit {
     getAll(): void {
         this.menuService.getAll()
             .subscribe((response: any) => {
-                this.datas = response;
-
-                // if (this.length === 0) {
-                //     this.showMessage = true;
-                //     this.hasSearch = false;
-                //     if (this.filterValue) {
-                //         this.noItems = true;
-                //     }
-                // } else {
-                //     this.hasSearch = true;
-                //     this.noItems = true;
-                //     this.showMessage = false;
-
-                //     setTimeout(() => {
-                //         Observable.fromEvent(this.searchTextRef.nativeElement, 'keyup')
-                //             .map((evt: any) => evt.target.value)
-                //             .debounceTime(800)
-                //             .distinctUntilChanged()
-                //             .subscribe((text: string) => this.applyFilter(text));
-                //     });
-                // }
+                this.datas = _.sortBy(response, [function (x) { return x.name; }]);
             }, (erro) => {
-                // this.showMessage = true;
-                // this.hasSearch = false;
+                console.log(erro);
             });
     }
 
-    delete(_id: string, type: string, index: number) {
+    openModal(id?): void {
+        const dialogRef = this.dialog.open(MenuModalComponent, {
+            width: '800px',
+            data: { id: id }
+        });
+
+        dialogRef.afterClosed()
+            .subscribe((result) => {
+                if (result) {
+                    this.getAll();
+                }
+            });
+    }
+
+    delete(data: any, type: string, indexSubMenu: number, indexLink: number) {
         swal({
             text: `Deseja realmente apagar ${type}?`,
             type: 'warning',
@@ -63,7 +62,7 @@ export class GerenciarMenuComponent implements OnInit {
             .then((isConfirm) => {
                 if (isConfirm) {
                     if (type == 'menu principal') {
-                        return this.menuService.delete(_id)
+                        return this.menuService.delete(data._id)
                             .subscribe((data: any) => {
                                 if (data) {
                                     swal({
@@ -77,9 +76,9 @@ export class GerenciarMenuComponent implements OnInit {
                                 this.getAll();
                             });
                     } else if (type == 'subitem') {
-
+                        data.items.splice(indexSubMenu, 1);
                     } else {
-
+                        data.items[indexSubMenu].listItem.splice(indexLink, 1);
                     }
 
                     const request = this.datas;

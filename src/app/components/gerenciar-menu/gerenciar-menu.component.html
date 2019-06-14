@@ -4,7 +4,7 @@
             <h4 class="title-page"><i class="fa fa-cog"></i> Gerenciar - Menu</h4>
         </div>
         <div class="col-12 col-xs-12 col-sm-4 button-align-right">
-            <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Novo item</button>
+            <button type="button" class="btn btn-primary" (click)="openModal()"><i class="fa fa-plus"></i> Novo item</button>
         </div>
     </div>
     <div class="row itens-body">
@@ -33,7 +33,8 @@
 
                     <mat-accordion>
                         <mat-expansion-panel (opened)="panelOpenStateSubMenu = true"
-                            (closed)="panelOpenStateSubMenu = false" *ngFor="let subMenu of data.items">
+                            (closed)="panelOpenStateSubMenu = false"
+                            *ngFor="let subMenu of data.items; let indexSubMenu = index">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <div class="container-fluid body-page">
@@ -56,26 +57,24 @@
                                 <i class="fa fa-plus-circle color-default"></i> Novo Link
                             </span>
                             <ul>
-                                <li *ngFor="let link of subMenu.listItem">
-                                    <span>{{link.name}}</span>
+                                <li *ngFor="let link of subMenu.listItem; let indexLink = index">
+                                    <div class="container-fluid body-page">
+                                        <div class="row">
+                                            <div class="col-12 col-xs-12 col-sm-6">
+                                                <span>{{link.name}}</span>
+                                            </div>
+                                            <div class="col-12 col-xs-12 col-sm-6 text-right">
+                                                <i class="fa fa-edit color-default"></i>
+                                                <i class="fa fa-trash icon-trash"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </mat-expansion-panel>
                     </mat-accordion>
 
                 </mat-expansion-panel>
-
-                <!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Self aware panel
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
-                </mat-expansion-panel> -->
             </mat-accordion>
         </div>
     </div>
