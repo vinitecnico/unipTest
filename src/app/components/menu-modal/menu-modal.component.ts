@@ -47,13 +47,32 @@ export class MenuModalComponent implements OnInit {
     }
 
     saveOrUpdate(id: number): void {
+        debugger
         if (!this.form.valid) {
             return;
         }
 
-        this.menuService.createOrUpdateMenu(this.form.value)
-            .subscribe((response) => {
-                this.closeDialog(response);
+        let request = this.form.value;
+        if (this.data.title == 'Sub-item' || this.data.title == 'link') {
+            if (!this.data.item.items) {
+                this.data.item.items = [];
+            }
+
+            if (this.data.title == 'Sub-item') {
+                this.data.item.items.push({ item: { name: request.name, icon: request.icon } });
+            } else {
+                if (!this.data.item.items[this.data.index].listItem) {
+                    this.data.item.items[this.data.index].listItem = [];
+                }
+                this.data.item.items[this.data.index].listItem.push({ name: request.name, icon: request.icon });
+            }
+
+            request = this.data.item;
+        }
+
+        this.menuService.createOrUpdateMenu(request)
+            .subscribe(() => {
+                this.closeDialog(true);
             }, (error) => {
 
             });

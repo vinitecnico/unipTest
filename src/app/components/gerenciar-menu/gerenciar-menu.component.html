@@ -4,7 +4,8 @@
             <h4 class="title-page"><i class="fa fa-cog"></i> Gerenciar - Menu</h4>
         </div>
         <div class="col-12 col-xs-12 col-sm-4 button-align-right">
-            <button type="button" class="btn btn-primary" (click)="openModal()"><i class="fa fa-plus"></i> Novo item</button>
+            <button type="button" class="btn btn-primary" (click)="openModal(null, 'item principal')"><i
+                    class="fa fa-plus"></i> Novo item</button>
         </div>
     </div>
     <div class="row itens-body">
@@ -22,9 +23,11 @@
                                         <span class="color-default">{{data.name}}</span>
                                     </div>
                                     <div class="col-12 col-xs-12 col-sm-6 text-right">
-                                        <span class="color-default"><i class="fa fa-plus-circle color-default"></i> Novo
-                                            Sub-item </span>
-                                        <i class="fa fa-trash icon-trash"></i>
+                                        <span class="color-default cursor-pointer"
+                                            (click)="openModal(data._id, 'Sub-item', data)">
+                                            <i class="fa fa-plus-circle color-default"></i> Novo Sub-item
+                                        </span>
+                                        <i class="fa fa-trash icon-trash cursor-pointer"></i>
                                     </div>
                                 </div>
                             </div>
@@ -41,8 +44,8 @@
                                         <div class="row">
                                             <div class="col-12 col-xs-12 col-sm-6">
                                                 <i class="fa fa-edit icon-default"></i>
-                                                <i class="fa {{subMenu.item.icon}} icon-custon color-default"></i>
-                                                <span class="color-default">{{subMenu.item.name}}</span>
+                                                <i class="fa {{subMenu?.item?.icon}} icon-custon color-default"></i>
+                                                <span class="color-default">{{subMenu?.item?.name}}</span>
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
                                                 <i class="fa fa-edit color-default"></i>
@@ -53,9 +56,9 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
-                            <span class="color-default">
-                                <i class="fa fa-plus-circle color-default"></i> Novo Link
-                            </span>
+                            <div class="cursor-pointer" (click)="openModal(data._id, 'link', data, indexSubMenu)">
+                                <i class="fa fa-plus-circle color-default"></i> <span class="color-default"> Novo Link</span>
+                            </div>
                             <ul>
                                 <li *ngFor="let link of subMenu.listItem; let indexLink = index">
                                     <div class="container-fluid body-page">

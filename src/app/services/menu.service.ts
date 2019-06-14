@@ -29,8 +29,8 @@ export class MenuService {
     createOrUpdateMenu(menu: any): Observable<any> {
         const url = `${this.apiConfig.getConfig()}api/menu`;
 
-        if (menu._id) {
-            return this.http.put(`${url}/${menu._id}`, menu, httpOptions);
+        if (menu.id) {
+            return this.http.put(`${url}/${menu.id}`, menu, httpOptions);
         } else {
             return this.http.post(url, menu, httpOptions);
         }

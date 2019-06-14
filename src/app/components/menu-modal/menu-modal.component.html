@@ -1,7 +1,11 @@
 <div class="no-breadcrumbs">
     <div class="row">
         <div class="col-10 col-md-10">
-            <h2 class="md-header-title" mat-dialog-title *ngIf="!id; else editHeader">Inserir novo item</h2>
+            <h2 class="md-header-title" mat-dialog-title *ngIf="!id; else editHeader">Inserir novo {{data.title}}</h2>
+
+            <ng-template #editHeader>
+                    <h2 class="md-header-title" mat-dialog-title>Editar {{data.title}}</h2>
+                </ng-template>
         </div>
         <div class="col-2 col-md-2 md-close-button">
             <span (click)="closeDialog()" class="cursor-pointer">

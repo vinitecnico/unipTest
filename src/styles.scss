@@ -79,7 +79,7 @@ $bg-color-green: #91c280;
 
     .icon-custon {
         padding-top: 4px;
-        padding-right: 2px;
+        padding-right: 4px;
     }
 
     .icon-trash {
@@ -128,8 +128,16 @@ $bg-color-green: #91c280;
     color: $bg-color-primary;
 }
 
-mat-panel-title .color-default {
+.cursor-pointer {
+    cursor: pointer;
+}
+
+div .color-default, mat-panel-title .color-default {
     color: $bg-color-primary;
+}
+
+.mat-expansion-panel-content .mat-expansion-panel-body {
+    padding-top: 1%;
 }
 
 @media only screen and (min-width: 992px) {
