@@ -4,7 +4,7 @@
             <h4 class="title-page"><i class="fa fa-cog"></i> Gerenciar - Menu</h4>
         </div>
         <div class="col-12 col-xs-12 col-sm-4 button-align-right">
-            <button type="button" class="btn btn-primary" (click)="openModal(null, 'item principal')"><i
+            <button type="button" class="btn btn-primary" (click)="openModal(true, null, 'item principal')"><i
                     class="fa fa-plus"></i> Novo item</button>
         </div>
     </div>
@@ -18,13 +18,14 @@
                             <div class="container-fluid body-page">
                                 <div class="row">
                                     <div class="col-12 col-xs-12 col-sm-6">
-                                        <i class="fa fa-edit icon-default"></i>
+                                        <i class="fa fa-edit icon-default"
+                                        (click)="openModal(true, data._id, 'item principal', data)"></i>
                                         <i class="fa {{data.icon}} icon-custon color-default"></i>
                                         <span class="color-default">{{data.name}}</span>
                                     </div>
                                     <div class="col-12 col-xs-12 col-sm-6 text-right">
                                         <span class="color-default cursor-pointer"
-                                            (click)="openModal(data._id, 'Sub-item', data)">
+                                            (click)="openModal(false, data._id, 'Sub-item', data)">
                                             <i class="fa fa-plus-circle color-default"></i> Novo Sub-item
                                         </span>
                                         <i class="fa fa-trash icon-trash cursor-pointer"></i>
@@ -43,12 +44,12 @@
                                     <div class="container-fluid body-page">
                                         <div class="row">
                                             <div class="col-12 col-xs-12 col-sm-6">
-                                                <i class="fa fa-edit icon-default"></i>
                                                 <i class="fa {{subMenu?.item?.icon}} icon-custon color-default"></i>
                                                 <span class="color-default">{{subMenu?.item?.name}}</span>
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
-                                                <i class="fa fa-edit color-default"></i>
+                                                <i class="fa fa-edit color-default cursor-pointer"
+                                                    (click)="openModal(false, data._id, 'Sub-item', data, null, indexSubMenu)"></i>
                                                 <i class="fa fa-trash icon-trash"></i>
                                             </div>
                                         </div>
@@ -56,8 +57,9 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
-                            <div class="cursor-pointer" (click)="openModal(data._id, 'link', data, indexSubMenu)">
-                                <i class="fa fa-plus-circle color-default"></i> <span class="color-default"> Novo Link</span>
+                            <div class="cursor-pointer" (click)="openModal(true, data._id, 'link', data, indexSubMenu)">
+                                <i class="fa fa-plus-circle color-default"></i> <span class="color-default"> Novo
+                                    Link</span>
                             </div>
                             <ul>
                                 <li *ngFor="let link of subMenu.listItem; let indexLink = index">
@@ -67,7 +69,8 @@
                                                 <span>{{link.name}}</span>
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
-                                                <i class="fa fa-edit color-default"></i>
+                                                <i class="fa fa-edit color-default cursor-pointer" 
+                                                (click)="openModal(false, data._id, 'link', data, indexSubMenu, indexLink)"></i>
                                                 <i class="fa fa-trash icon-trash"></i>
                                             </div>
                                         </div>

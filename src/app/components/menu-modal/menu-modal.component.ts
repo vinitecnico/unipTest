@@ -37,10 +37,27 @@ export class MenuModalComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.data && this.data.id) {
-            this.menuService.getById(this.data.id)
-                .subscribe((response) => {
-                    this.fillModal(response);
+        if (this.data && this.data.item && this.data.item.id && !this.data.item.isNew) {
+            this.menuService.getById(this.data.item.id)
+                .subscribe((response: any) => {
+                    const data: any = {};
+                    switch (this.data.title) {
+                        case 'Sub-item':
+                            data.name = response.items[this.data.indexEdit].item.name;
+                            data.icon = response.items[this.data.indexEdit].item.icon;
+                            break;
+                        case 'link':
+                            data.name = response.items[this.data.index].listItem[this.data.indexEdit].name;
+                            data.icon = response.items[this.data.index].listItem[this.data.indexEdit].icon;
+                            break;
+                        default:
+                            data.name = response.name;
+                            data.icon = response.icon;
+                            break;
+                    }
+
+                    data._id = response.id;
+                    this.fillModal(data);
                 });
         }
         this.dialog = this.dialogRef;
@@ -83,9 +100,6 @@ export class MenuModalComponent implements OnInit {
     }
 
     fillModal(data): void {
-        data.clientId = null;
-        data.clientBaseId = null;
-
         this.form.setValue(data);
     }
 }

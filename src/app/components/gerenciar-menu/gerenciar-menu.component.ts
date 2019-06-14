@@ -34,10 +34,10 @@ export class GerenciarMenuComponent implements OnInit {
             });
     }
 
-    openModal(id?, title?, item?, index?): void {
+    openModal(isNew, id?, title?, item?, index?, indexEdit?): void {
         const dialogRef = this.dialog.open(MenuModalComponent, {
             width: '800px',
-            data: { id: id, title: title, item: item, index: index }
+            data: { isNew: isNew, id: id, title: title, item: item, index: index, indexEdit: indexEdit }
         });
 
         dialogRef.afterClosed()
