@@ -4,7 +4,7 @@
             <h4 class="title-page"><i class="fa fa-cog"></i> Gerenciar - Menu</h4>
         </div>
         <div class="col-12 col-xs-12 col-sm-4 button-align-right">
-            <button type="button" class="btn btn-primary" (click)="openModal(true, null, 'item principal')"><i
+            <button type="button" class="btn btn-primary" (click)="openModal(true, null, 'item principal', null, null)"><i
                     class="fa fa-plus"></i> Novo item</button>
         </div>
     </div>
@@ -19,13 +19,13 @@
                                 <div class="row">
                                     <div class="col-12 col-xs-12 col-sm-6">
                                         <i class="fa fa-edit icon-default"
-                                        (click)="openModal(true, data._id, 'item principal', data)"></i>
+                                            (click)="openModal(false, data._id, 'item principal', data, null, null)"></i>
                                         <i class="fa {{data.icon}} icon-custon color-default"></i>
                                         <span class="color-default">{{data.name}}</span>
                                     </div>
                                     <div class="col-12 col-xs-12 col-sm-6 text-right">
                                         <span class="color-default cursor-pointer"
-                                            (click)="openModal(false, data._id, 'Sub-item', data)">
+                                            (click)="openModal(true, data._id, 'Sub-item', data, null, null)">
                                             <i class="fa fa-plus-circle color-default"></i> Novo Sub-item
                                         </span>
                                         <i class="fa fa-trash icon-trash cursor-pointer"></i>
@@ -57,7 +57,7 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
-                            <div class="cursor-pointer" (click)="openModal(true, data._id, 'link', data, indexSubMenu)">
+                            <div class="cursor-pointer" (click)="openModal(true, data._id, 'link', data, indexSubMenu, null)">
                                 <i class="fa fa-plus-circle color-default"></i> <span class="color-default"> Novo
                                     Link</span>
                             </div>
@@ -69,8 +69,8 @@
                                                 <span>{{link.name}}</span>
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
-                                                <i class="fa fa-edit color-default cursor-pointer" 
-                                                (click)="openModal(false, data._id, 'link', data, indexSubMenu, indexLink)"></i>
+                                                <i class="fa fa-edit color-default cursor-pointer"
+                                                    (click)="openModal(false, data._id, 'link', data, indexSubMenu, indexLink)"></i>
                                                 <i class="fa fa-trash icon-trash"></i>
                                             </div>
                                         </div>
@@ -82,6 +82,20 @@
 
                 </mat-expansion-panel>
             </mat-accordion>
+        </div>
+    </div>
+    <div class="row" style="padding: 16px;" *ngIf="datas && datas.length == 0">
+        <div class="col-xs-12 col-sm-12 nm-not-found-container alert alert-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-1">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div class="col-xs-11 col-sm-11">
+                        <div class="nm-not-found-message">Sua busca não encontrou resultado algum :(</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -140,6 +140,27 @@ div .color-default, mat-panel-title .color-default {
     padding-top: 1%;
 }
 
+.nm-not-found-container {
+    i {
+        font-size: 40px;
+    }
+}
+
+.menu-not-found-body {
+    margin-bottom: 5%;    
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.nm-not-found-message {
+    font-size: 24px;
+    color: #333;
+    font-weight: 400;
+}
+
 @media only screen and (min-width: 992px) {
     .nav-link-sm-hidden {
         display: none;
