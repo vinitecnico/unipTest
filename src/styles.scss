@@ -179,4 +179,41 @@ div .color-default, mat-panel-title .color-default {
     .nav-menu-left-sm-hidden {
         display: none;
     }
+
+    .btn-salvar {
+        width: 48%;
+        height: 45px;
+        font-size: 18px;
+        color: $bg-color-white;
+        background-color: $bg-color-green;
+    }
+    
+    .btn-cancelar {
+        width: 48%;
+        height: 45px;
+        font-size: 18px;
+        color: $bg-color-white;
+        background-color: $bg-color-remove;
+    }
+
+    .title-menu {
+        display: inline-block;
+        width: 115px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 15px;
+    }
+
+    .title-sub-menu {
+        display: inline-block;
+        width: 48px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 15px;
+    }
+
+    div .mat-dialog-content {
+        padding: 0;
+        margin: 0;
+    }
 }

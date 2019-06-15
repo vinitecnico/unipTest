@@ -22,7 +22,7 @@
                                         <i class="fa fa-edit icon-default"
                                             (click)="openModal(false, data._id, 'item principal', data, null, null)"></i>
                                         <i class="fa {{data.icon}} icon-custon color-default"></i>
-                                        <span class="color-default">{{data.name}}</span>
+                                        <span class="color-default title-menu">{{data.name}}</span>
                                     </div>
                                     <div class="col-12 col-xs-12 col-sm-6 text-right">
                                         <span class="color-default cursor-pointer"
@@ -47,7 +47,7 @@
                                         <div class="row">
                                             <div class="col-12 col-xs-12 col-sm-6">
                                                 <i class="fa {{subMenu?.item?.icon}} icon-custon color-default"></i>
-                                                <span class="color-default">{{subMenu?.item?.name}}</span>
+                                                <span class="color-default title-sub-menu">{{subMenu?.item?.name}}</span>
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
                                                 <i class="fa fa-edit color-default cursor-pointer"
@@ -70,7 +70,7 @@
                                     <div class="container-fluid body-page">
                                         <div class="row">
                                             <div class="col-12 col-xs-12 col-sm-6">
-                                                <span>{{link.name}}</span>
+                                                <span class="title-sub-menu">{{link.name}}</span>
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
                                                 <i class="fa fa-edit color-default cursor-pointer"
