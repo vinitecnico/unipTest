@@ -43,7 +43,9 @@ export class GerenciarMenuComponent implements OnInit {
         dialogRef.afterClosed()
             .subscribe((result) => {
                 if (result) {
-                    this.getAll();
+                    if (!id) {
+                        this.getAll();
+                    }
                 }
             });
     }
@@ -61,8 +63,8 @@ export class GerenciarMenuComponent implements OnInit {
         })
             .then((isConfirm) => {
                 if (isConfirm) {
-                    if (type == 'menu principal') {
-                        return this.menuService.delete(data._id)
+                    if (type == 'menu-principal') {
+                        return this.menuService.delete(data.id)
                             .subscribe((data: any) => {
                                 if (data) {
                                     swal({
@@ -75,20 +77,20 @@ export class GerenciarMenuComponent implements OnInit {
                             }, () => {
                                 this.getAll();
                             });
-                    } else if (type == 'subitem') {
+                    } else if (type == 'Sub-item') {
                         data.items.splice(indexSubMenu, 1);
                     } else {
                         data.items[indexSubMenu].listItem.splice(indexLink, 1);
                     }
 
-                    const request = this.datas;
+                    const request = data;
                     this.menuService.createOrUpdateMenu(request)
                         .subscribe((response) => {
                             swal({
                                 text: `${type} apagado com sucesso!`,
                                 type: 'success'
                             }).then(() => {
-                                this.getAll();
+                                // this.getAll();
                             });
                         }, (error) => {
                             swal({

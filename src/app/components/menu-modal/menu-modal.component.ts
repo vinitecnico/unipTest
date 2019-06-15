@@ -92,7 +92,7 @@ export class MenuModalComponent implements OnInit {
 
             request = this.data.item;
         } else {
-            if (!this.data.item.isNew) {
+            if (!this.data.isNew) {
                 request.id = id;
             }
         }
