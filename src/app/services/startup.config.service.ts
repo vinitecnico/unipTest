@@ -11,7 +11,7 @@ export class StartupConfigService {
             return this.value;
         }
 
-        this.value = 'http://localhost:7001/';
+        this.value = 'https://apitestunipcore.herokuapp.com/';
         return this.value;
     }
 }

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
-import { NgbModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbCollapseModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -61,6 +61,7 @@ import { MenuService } from './services/menu.service';
     AppRoutingModule,
     NgbModule.forRoot(),
     NgbCollapseModule,
+    NgbAccordionModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     BlockUIModule.forRoot(),
