@@ -16,7 +16,7 @@ import { MenuService } from 'src/app/services/menu.service';
 })
 
 export class GerenciarMenuComponent implements OnInit {
-    datas: [];
+    datas: any;
     constructor(private menuService: MenuService, public dialog: MatDialog) {
 
     }
@@ -100,5 +100,28 @@ export class GerenciarMenuComponent implements OnInit {
                         });
                 }
             });
+    }
+
+    collapsedItem(index, indexSubMenu?) {
+        _.each(this.datas, x => {
+            if (x.id != this.datas[index].id) {
+                x.isCollapsed = false;
+            } else {
+                if (indexSubMenu >= 0) {
+                    _.each(this.datas[index].items, (y, i) => {
+                        if (i != indexSubMenu) {
+                            y.item.isCollapsed = false;
+                        } else {
+                            y.item.isCollapsed = !y.item.isCollapsed;
+                        }
+                    });
+                } else {
+                    this.datas[index].isCollapsed = !this.datas[index].isCollapsed;
+                    _.each(this.datas[index].items, y => {
+                        y.item.isCollapsed = false;
+                    });
+                }
+            }
+        });
     }
 }

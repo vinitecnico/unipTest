@@ -11,7 +11,94 @@
     </div>
     <div class="row itens-body">
         <div class="col-12">
-            <mat-accordion>
+
+            <div *ngFor="let data of datas; let indexMain = index">
+                <div class="alert alert-dark" role="alert">
+                    <div class="container-fluid body-page">
+                        <div class="row">
+                            <div class="col-12 col-xs-12 col-sm-6">
+                                <i class="fa fa-edit icon-default cursor-pointer"
+                                    (click)="openModal(false, data.id, 'item principal', data, null, null)">
+                                </i>
+                                <span class="color-default title-menu cursor-pointer"
+                                    (click)="collapsedItem(indexMain)">
+                                    <i class="fa {{data.icon}} icon-custon color-default"></i> {{data.name}}
+                                </span>
+                            </div>
+                            <div class="col-12 col-xs-12 col-sm-6 text-right">
+                                <span class="color-default cursor-pointer"
+                                    (click)="openModal(true, data.id, 'Sub-item', data, null, null)">
+                                    <i class="fa fa-plus-circle color-default"></i> Novo Sub-item
+                                </span>
+                                <i class="fa fa-trash icon-trash cursor-pointer"
+                                    (click)="delete(data, 'menu-principal', null, null)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="{{data.name}}-{{indexMain}}" [ngbCollapse]="data.isCollapsed">
+                    <div class="card" *ngIf="data.items && data.items.length > 0">
+                        <div class="card-body">
+                            <div class="alert alert-dark" role="alert" *ngFor="let subMenu of data.items; let indexSubMenu = index">
+                                <div class="container-fluid body-page">
+                                    <div class="row">
+                                        <div class="col-12 col-xs-12 col-sm-6 cursor-pointer"
+                                            (click)="collapsedItem(indexMain, indexSubMenu)">
+                                            <i class="fa {{subMenu?.item?.icon}} icon-custon color-default"></i>
+                                            <span class="color-default title-sub-menu">{{subMenu?.item?.name}}</span>
+                                        </div>
+                                        <div class="col-12 col-xs-12 col-sm-6 text-right">
+                                            <i class="fa fa-edit color-default cursor-pointer"
+                                                (click)="openModal(false, data.id, 'Sub-item', data, null, indexSubMenu)"></i>
+                                            <i class="fa fa-trash icon-trash cursor-pointer"
+                                                (click)="delete(data, 'Sub-item', indexSubMenu, null)"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" [ngbCollapse]="!subMenu?.item?.isCollapsed">
+                                        <div class="col-12 col-xs-12 col-sm-12">
+                                            <div class="cursor-pointer new-link"
+                                                (click)="openModal(true, data.id, 'link', data, indexSubMenu, null)">
+                                                <i class="fa fa-plus-circle color-default"></i>
+                                                <span class="color-default"> Novo Link</span>
+                                            </div>
+                                            <ul>
+                                                <li *ngFor="let link of subMenu.listItem; let indexLink = index">
+                                                    <div class="container-fluid body-page">
+                                                        <div class="row">
+                                                            <div class="col-12 col-xs-12 col-sm-6">
+                                                                <span class="title-sub-menu">{{link.name}}</span>
+                                                            </div>
+                                                            <div class="col-12 col-xs-12 col-sm-6 text-right">
+                                                                <i class="fa fa-edit color-default cursor-pointer"
+                                                                    (click)="openModal(false, data.id, 'link', data, indexSubMenu, indexLink)"></i>
+                                                                <i class="fa fa-trash icon-trash cursor-pointer"
+                                                                    (click)="delete(data, 'link', indexSubMenu, indexLink)"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card" *ngIf="!data.items || data.items.length == 0">
+                        <div class="card-body">
+                            Ainda não existe menu cadastrado para esse SubItem! ;(
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- <mat-accordion>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
                     *ngFor="let data of datas">
                     <mat-expansion-panel-header>
@@ -87,7 +174,7 @@
                     </mat-accordion>
 
                 </mat-expansion-panel>
-            </mat-accordion>
+            </mat-accordion> -->
         </div>
     </div>
     <div class="row" style="padding: 16px;" *ngIf="datas && datas.length == 0">
