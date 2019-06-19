@@ -16,7 +16,7 @@ export class MenuModalComponent implements OnInit {
     form: FormGroup;
     dialog: MatDialogRef<MenuModalComponent>;
     nameIcon: string;
-    id: string;
+    isNew: boolean;
     icons = ['fa-glass', 'fa-music', 'fa-search', 'fa-envelope-o', 'fa-heart', 'fa-star', 'fa-star-o', 'fa-user',
         'fa-film', 'fa-th-large'];
 
@@ -35,7 +35,7 @@ export class MenuModalComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.id = this.data ? this.data.id: null;
+        this.isNew = this.data.isNew;
         if (this.data && this.data.item && this.data.item.id && !this.data.isNew) {
             this.menuService.getById(this.data.item.id)
                 .subscribe((response: any) => {

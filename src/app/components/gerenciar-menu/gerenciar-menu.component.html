@@ -20,13 +20,13 @@
                                 <div class="row">
                                     <div class="col-12 col-xs-12 col-sm-6">
                                         <i class="fa fa-edit icon-default"
-                                            (click)="openModal(false, data._id, 'item principal', data, null, null)"></i>
+                                            (click)="openModal(false, data.id, 'item principal', data, null, null)"></i>
                                         <i class="fa {{data.icon}} icon-custon color-default"></i>
                                         <span class="color-default title-menu">{{data.name}}</span>
                                     </div>
                                     <div class="col-12 col-xs-12 col-sm-6 text-right">
                                         <span class="color-default cursor-pointer"
-                                            (click)="openModal(true, data._id, 'Sub-item', data, null, null)">
+                                            (click)="openModal(true, data.id, 'Sub-item', data, null, null)">
                                             <i class="fa fa-plus-circle color-default"></i> Novo Sub-item
                                         </span>
                                         <i class="fa fa-trash icon-trash cursor-pointer"
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
                                                 <i class="fa fa-edit color-default cursor-pointer"
-                                                    (click)="openModal(false, data._id, 'Sub-item', data, null, indexSubMenu)"></i>
+                                                    (click)="openModal(false, data.id, 'Sub-item', data, null, indexSubMenu)"></i>
                                                 <i class="fa fa-trash icon-trash cursor-pointer"
                                                     (click)="delete(data, 'Sub-item', indexSubMenu, null)"></i>
                                             </div>
@@ -62,7 +62,7 @@
                             </mat-expansion-panel-header>
 
                             <div class="cursor-pointer"
-                                (click)="openModal(true, data._id, 'link', data, indexSubMenu, null)">
+                                (click)="openModal(true, data.id, 'link', data, indexSubMenu, null)">
                                 <i class="fa fa-plus-circle color-default"></i> <span class="color-default"> Novo
                                     Link</span>
                             </div>
@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="col-12 col-xs-12 col-sm-6 text-right">
                                                 <i class="fa fa-edit color-default cursor-pointer"
-                                                    (click)="openModal(false, data._id, 'link', data, indexSubMenu, indexLink)"></i>
+                                                    (click)="openModal(false, data.id, 'link', data, indexSubMenu, indexLink)"></i>
                                                 <i class="fa fa-trash icon-trash cursor-pointer"
                                                     (click)="delete(data, 'link', indexSubMenu, indexLink)"></i>
                                             </div>
