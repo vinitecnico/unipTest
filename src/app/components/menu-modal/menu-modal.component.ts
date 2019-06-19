@@ -105,7 +105,7 @@ export class MenuModalComponent implements OnInit {
             });
     }
 
-    closeDialog(callback): void {
+    closeDialog(callback?): void {
         this.dialogRef.close(callback);
     }
 
