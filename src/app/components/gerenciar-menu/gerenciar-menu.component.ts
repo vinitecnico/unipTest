@@ -29,6 +29,12 @@ export class GerenciarMenuComponent implements OnInit {
         this.menuService.getAll()
             .subscribe((response: any) => {
                 this.datas = _.sortBy(response, [function (x) { return x.name; }]);
+                _.each(this.datas, x => {
+                    x.isCollapsed = false;
+                    _.each(x.items, (y, i) => {
+                        y.item.isCollapsed = false;
+                    });
+                });
             }, (erro) => {
                 console.log(erro);
             });
