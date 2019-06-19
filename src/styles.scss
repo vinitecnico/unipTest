@@ -173,6 +173,33 @@ div .color-default, mat-panel-title .color-default {
     background: #e8e8e8;
 }
 
+mat-dialog-container{
+    padding: 0!important;
+    overflow-x: hidden!important;;
+
+    app-menu-modal .no-breadcrumbs{
+        background-color: $bg-color-primary;
+        color: $bg-color-white;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    section {
+        padding: 22px!important;
+        margin-left: 0!important;
+    }
+
+    .mat-dialog-actions {
+        padding: 22px!important;
+        margin-left: 0!important;
+        margin-bottom: 10px!important;
+    }
+
+    .md-close-button {
+        padding-right: 50px;
+    }
+}
+
 @media only screen and (min-width: 992px) {
     .nav-link-sm-hidden {
         display: none;
