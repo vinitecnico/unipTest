@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div id="{{data.name}}-{{indexMain}}" [ngbCollapse]="data.isCollapsed">
+                <div id="{{data.name}}-{{indexMain}}" [ngbCollapse]="!data.isCollapsed">
                     <div class="card" *ngIf="data.items && data.items.length > 0">
                         <div class="card-body">
                             <div class="alert alert-dark" role="alert" *ngFor="let subMenu of data.items; let indexSubMenu = index">
