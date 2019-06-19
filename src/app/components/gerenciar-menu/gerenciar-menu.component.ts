@@ -49,7 +49,7 @@ export class GerenciarMenuComponent implements OnInit {
         dialogRef.afterClosed()
             .subscribe((result) => {
                 if (result) {
-                    if (!id) {
+                    if (!id || title == 'item principal') {
                         this.getAll();
                     }
                 }
